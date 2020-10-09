@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+html {
+    color: grey;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+p {
+    padding: 10px;
+    margin: 5px;
+}
+    /* background-color: #52796F; */
+    /* background-color: #7A9E7E; */
+
+button {
+    background-color: #354F52;
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+}
