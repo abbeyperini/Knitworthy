@@ -1,8 +1,8 @@
 <h1> Knitworthy </h1>
 
-- In the knitting/crochet/fiber arts community, someone who appreciates a handmade gift and takes care of it is considered "knitworthy." Ravelry, a fiber arts website with over 9 million users, created a hub for sharing information about materials and techniques and a way to exchange and sell patterns in pdf form. Users can keep track of their yarn and their projects, entering stats about when they started and finished, the yarn they used, etc. Knitworthy will use the Ravelry API to generate facts that put the amount of love that goes into a handmade fiber arts gift into perspective for a layman. For example, selecting the project below, a crochet blanket made following the pattern Rings of Change by Frank O'Randle, would result in a fact like "The yarn in your Rings of Change project could cover the width of Manhattan Island 1.48 times."
+- In the knitting/crochet/fiber arts community, someone who appreciates a handmade gift and takes care of it is considered "knitworthy." Ravelry, a fiber arts website with over 9 million users, created a hub for sharing information about materials and techniques and a way to exchange and sell patterns in pdf form. Users can keep track of their yarn and their projects, entering stats about when they started and finished, the yarn they used, etc. Knitworthy will use the Ravelry API to generate facts that put the amount of love that goes into a handmade fiber arts gift into perspective for a layman. For example, selecting the project below, a crochet blanket made following the pattern Rings of Change by Frank O'Randle, would result in a fact like "The yarn in your Rings of Change project could stretch the width of Manhattan Island 1.48 times."
 
-<img src="screenshots/ringsOfChange.jpg" alt="A crochet blanket in teal yarn made following the pattern Rings of Change by Frank O'Randle" width="500" height="500">
+<img src="screenshots/ringsOfChange.jpg" alt="A crochet blanket in teal yarn made following the pattern Rings of Change by Frank O'Randle" width="600" height="500">
 
 <h2> Summary </h2>
 
