@@ -9,11 +9,20 @@ html {
     font-family: 'Vidaloka', serif;
 }
 
-#container {
+header {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+img {
+    margin: 2%;
 }
 
 p {
@@ -26,9 +35,14 @@ p {
     /* ming: #016D77 */
 
 button {
-    background-color: #016D77;
+    background-color: #685B86;
     border: none;
     color: white;
     padding: 15px;
+    margin: 2%;
     border-radius: 12px;
+}
+
+input {
+    margin: 2%;
 }
