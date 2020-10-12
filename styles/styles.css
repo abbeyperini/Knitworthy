@@ -77,11 +77,35 @@ main img {
     margin-top: 2%;
 }
 
-@media only screen and (min-width: 961px) {
+#projectDetail {
+    float: right;
+    position: relative;
+    top: -900px;
+    right: 400px;
+}
+
+
+@media only screen and (min-width: 461px) {
     #profileInfo {
         width: 900px;
         height: 1000px;
         margin-left: 0;
     }
 
+}
+
+@media (min-width: 300px) and (max-width: 461px) {
+    #projectDetail {
+        top: 10px;
+        right: 150px;
+    }
+    #imageDetails {
+        display: block;
+        width: 60px;
+    }
+    #imageDetailsText {
+        margin: 0px;
+        width: 100px;
+        text-align: center;
+    }
 }

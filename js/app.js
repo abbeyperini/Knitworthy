@@ -29,12 +29,12 @@ function showProjects(json) {
         return `<li class = "projectInfo">
                     <p>${project.name}</p>
                     <img src = ${project.first_photo.square_url}>
-                    <button onclick="showState('${project.pattern_id}')">Choose me</button>
+                    <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${project.name}')">Choose me</button>
                 </li>`
     })
     profileInfo.insertAdjacentHTML('beforeend', projects.join(''))
 }
-function showState(id){
+function showState(id, img, name){
     if (id == "null"){
         window.alert("Please choose a project with a pattern selected in Project info.")
     }else{
@@ -53,12 +53,16 @@ function showState(id){
     }
     let json = getAPI(url)
     .then(function(json){
-        showProjectDetail(json)
+        showProjectDetail(json,img, name)
     })}
 
 }
 
-function showProjectDetail(json){
-    let details = `<p>${json.pattern.yardage_max}</p>`
+function showProjectDetail(json, img, name){
+    let details = `<div id = "imageDetails">
+                    <p>${json.pattern.yardage_max}</p>
+                    <img src = '${img}'>
+                    <p id = "imageDetailsText">${name}</p>
+                    </div>`
     projectDetail.innerHTML = details
 }
