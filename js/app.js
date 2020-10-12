@@ -1,5 +1,7 @@
 let nameInput = document.getElementById("username")
 let nameSearch = document.getElementById("nameSearch")
+let profileInfo = document.getElementById("profileInfo")
+
 
 nameSearch.addEventListener("click", () => {
     let name = nameInput.value
@@ -12,7 +14,22 @@ nameSearch.addEventListener("click", () => {
         }).then(function(json) { 
             console.log(json)
             return json; 
-        });
+        }); 
     }
-    getAPI(url)
+    let json = getAPI(url)
+    .then(function(json){
+        showProjects(json)
+    })
+
 })
+
+function showProjects(json) {
+    let projects = json.projects.map((project) => {
+        return `<li class = "projectInfo">
+                    <p>Completed on ${project.completed}</p>
+                    <p>Craft name ${project.craft_name}</p>
+                    <img src = ${project.first_photo.square_url}>
+                </li>`
+    })
+    profileInfo.insertAdjacentHTML('beforeend', projects.join(''))
+}
