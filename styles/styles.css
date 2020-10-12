@@ -51,3 +51,14 @@ main img {
     width: 200px;
     border: 2px solid #ED786D;
 }
+
+.projectInfo {
+    display: inline-block;
+    margin: 2px;
+    border: groove mediumpurple;
+}
+
+#profileInfo {
+    display: flex;
+    flex-wrap: wrap;
+}
