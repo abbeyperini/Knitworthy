@@ -27,8 +27,7 @@ nameSearch.addEventListener("click", () => {
 function showProjects(json) {
     let projects = json.projects.map((project) => {
         return `<li class = "projectInfo">
-                    <p>Completed on ${project.completed}</p>
-                    <p>Craft name ${project.craft_name}</p>
+                    <p>${project.name}</p>
                     <img src = ${project.first_photo.square_url}>
                     <button onclick="showState('${project.pattern_id}')">Choose me</button>
                 </li>`

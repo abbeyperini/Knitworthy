@@ -15,7 +15,7 @@ header, .userHolder {
     align-items: center;
 }
 
-form, .projectHolder {
+.usernameSearch, .projectHolder {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -53,12 +53,35 @@ main img {
 }
 
 .projectInfo {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 2px;
-    border: groove mediumpurple;
+    border: 2px solid #685B86;
+    border-radius: 8px;
+}
+
+.projectInfo p {
+    width: 200px;
+    text-align: center;
 }
 
 #profileInfo {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    overflow: auto;
+    width: 300px;
+    height: 300px;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+
+@media only screen and (min-width: 961px) {
+    #profileInfo {
+        width: 900px;
+        height: 1000px;
+        margin-left: 0;
+    }
+
 }
