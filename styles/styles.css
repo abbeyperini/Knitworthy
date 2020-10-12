@@ -5,28 +5,44 @@
     }
 
 html {
-    color: grey;
+    color: #685B86;
     font-family: 'Vidaloka', serif;
 }
 
-#container {
+header {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    text-align: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+img {
+    margin: 2%;
 }
 
 p {
     padding: 10px;
     margin: 5px;
 }
-    /* background-color: #52796F; */
-    /* background-color: #7A9E7E; */
+    /* powder-blue: #B4DCDB; */
+    /* salmon: #ED786D; */
+    /* dark blue gray: #685B86 */
+    /* ming: #016D77 */
 
 button {
-    background-color: #354F52;
+    background-color: #685B86;
     border: none;
     color: white;
     padding: 15px;
+    margin: 2%;
     border-radius: 12px;
+}
+
+input {
+    margin: 2%;
 }
