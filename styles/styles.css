@@ -9,13 +9,13 @@ html {
     font-family: 'Vidaloka', serif;
 }
 
-header {
+header, .userHolder {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-form {
+form, .projectHolder {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -45,4 +45,9 @@ button {
 
 input {
     margin: 2%;
+}
+
+main img {
+    width: 200px;
+    border: 2px solid #ED786D;
 }
