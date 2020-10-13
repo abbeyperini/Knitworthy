@@ -9,13 +9,19 @@ html {
     font-family: 'Vidaloka', serif;
 }
 
+body { 
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
 header, .userHolder {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-form, .projectHolder {
+.usernameSearch, .projectHolder {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -53,12 +59,100 @@ main img {
 }
 
 .projectInfo {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 2px;
-    border: groove mediumpurple;
+    border: 2px solid #685B86;
+    border-radius: 8px;
+}
+
+.projectInfo p {
+    width: 200px;
+    text-align: center;
 }
 
 #profileInfo {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    overflow: auto;
+    width: 300px;
+    height: 580px;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+.modal-content{
+    background-color: #f4f4f4 ;
+    margin: 20% auto;
+    padding:  20px;
+    width:  70%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17)
+}
+.closeBtn{
+   color: #ccc;
+   float: right;
+   font-size: 30px; 
+}
+
+@media only screen and (min-width: 461px) {
+    #profileInfo {
+        width: 900px;
+        height: 1000px;
+        margin-left: 0;
+    }
+    .logo {
+        width: 300px;
+        height: 300px;
+    }
+    #projectDetail {
+        display: grid;
+        place-items: baseline center;
+        height: 500px;
+    }
+    #imageDetails {
+        display: grid;
+        place-items: center;
+    }
+    #imageDetailsText {
+        margin: auto;
+        text-align: center;
+    }
+
+}
+
+@media (min-width: 300px) and (max-width: 461px) {
+    #projectDetail {
+        display: grid;
+        place-items: baseline center;
+        height: 500px;
+    }
+    #imageDetails {
+        display: grid;
+        place-items: center;
+    }
+    #imageDetailsText {
+        margin: auto;
+        text-align: center;
+    }
+    .logo {
+        width: 150px;
+        height: 150px;
+    }
+    #profileInfo {
+        margin: 0px;
+    }
 }

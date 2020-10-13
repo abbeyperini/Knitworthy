@@ -6,7 +6,7 @@ let modal = document.getElementById("simpleModal");
 let closeBtn = document.getElementById("closeBtn");
 
 const sort1 = lengths.sort((a,b)=> a.length - b.length)
-console.log(sort1)
+
 
 nameSearch.addEventListener("click", () => {
   let name = nameInput.value;
@@ -25,6 +25,7 @@ function showProjects(json) {
                 </li>`;
   });
   profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
+
 }
 function showState(id, img, name) {
   if (id == "null") {
@@ -75,6 +76,7 @@ function getAPI(url) {
       console.log(json);
       return json;
     });
+
 }
 
 function generateText(size){
@@ -87,4 +89,5 @@ function generateText(size){
       return "too small"
     }
   }
+
 }
