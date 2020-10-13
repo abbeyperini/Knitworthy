@@ -6,6 +6,7 @@ let modal = document.getElementById("simpleModal");
 let closeBtn = document.getElementById("closeBtn");
 
 
+
 nameSearch.addEventListener("click", () => {
   let name = nameInput.value;
   let url = `https://api.ravelry.com/projects/${name}/list.json`;
@@ -77,6 +78,14 @@ closeBtn.addEventListener("click", closeModal);
 
 function closeModal() {
   modal.style.display = "none";
+}
+
+// function to close modal if click outside
+window.addEventListener("click", outsideClick)
+function outsideClick(click) {
+  if(click.target == modal){
+    modal.style.display = "none";
+  }
 }
 
 //function to fetch data from ravelry

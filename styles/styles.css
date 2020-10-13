@@ -107,6 +107,11 @@ main img {
    float: right;
    font-size: 30px; 
 }
+.closeBtn:hover,.closeBtn:focus{
+    color:black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 @media only screen and (min-width: 461px) {
     #profileInfo {
