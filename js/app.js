@@ -29,7 +29,10 @@ function showProjects(json) {
     return `<li class = "projectInfo">
                     <p>${project.name}</p>
                     <img src = ${project.first_photo.square_url}>
-                    <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Choose me</button>
+                    <div class="projectInfoBtns">
+                      <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Yardage</button>
+                      <button onclick="showTime('${project.completed}', '${project.started}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Time</button>
+                    </div>
                 </li>`;
   });
   profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
@@ -46,6 +49,23 @@ function showState(id, img, name) {
       showProjectDetail(json, img, name);
     });
   }
+}
+
+function showTime(completed, started, img, name) {
+  // condition for nulls
+  
+  let startDate = new Date(started)
+  let endDate = new Date(completed)
+  let totalTime = (((((endDate - startDate) / 1000) / 60) / 60) / 24)
+  let timeText = generateTimeText(name, totalTime)
+  let details = `<div>
+                    <img src = '${img}'>
+                    <p>${timeText}</p>
+                </div>`
+
+  projectDetail.innerHTML = details;
+  // call function to open modal
+  openModal();
 }
 
 function showProjectDetail(json, img, name) {
@@ -124,4 +144,9 @@ function generateText(name, size) {
   } else {
     return `The yarn in your ${name} project could span the ${lengths[index].dimension} of ${lengths[index].name} ${coefficient.toFixed(2)} times`
   }
+}
+
+function generateTimeText(name, time) {
+  console.log(time)
+  return "Placeholder until library built."
 }
