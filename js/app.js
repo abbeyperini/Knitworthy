@@ -75,6 +75,8 @@ function getAPI(url) {
     .then(function (json) {
       console.log(json);
       return json;
+    }).catch(function(error){
+      window.alert("Your Username Is not Available!")
     });
 
 }
