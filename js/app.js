@@ -34,17 +34,32 @@ function showState(id, img, name) {
       showProjectDetail(json, img, name);
     });
   }
-  // call function to open modal
-  openModal();
 }
 
 function showProjectDetail(json, img, name) {
-  let details = `<div id = "imageDetails">
-                    <p>${json.pattern.yardage_max}</p>
-                    <img src = '${img}'>
-                    <p id = "imageDetailsText">"${name}"</p>
-                    </div>`;
-  projectDetail.innerHTML = details;
+  if (json.pattern.yardage_max != null) {
+    let details = `<div id = "imageDetails">
+                      <p>${json.pattern.yardage_max}</p>
+                      <img src = '${img}'>
+                      <p id = "imageDetailsText">"${name}"</p>
+                      </div>`;
+    projectDetail.innerHTML = details;
+    // call function to open modal
+    openModal();
+  } else if (json.pattern.yardage != null) { 
+    let details = `<div id = "imageDetails">
+                      <p>${json.pattern.yardage}</p>
+                      <img src = '${img}'>
+                      <p id = "imageDetailsText">"${name}"</p>
+                      </div>`;
+    projectDetail.innerHTML = details;
+    // call function to open modal
+    openModal();
+  } else {
+    window.alert(
+      "Please choose a project with a pattern that has a suggested yardage."
+    );
+  }
 }
 // add function to show the modal
 function openModal() {
