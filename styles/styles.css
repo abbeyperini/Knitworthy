@@ -129,8 +129,8 @@ main img {
     }
     #projectDetail {
         display: grid;
-        place-items: baseline center;
-        height: 400px;
+        place-items: center;
+        height: 100%;
     }
     #imageDetails {
         display: grid;
@@ -141,7 +141,7 @@ main img {
         text-align: center;
     }
     .modal-content {
-        width: 700px;
+        width: 25%;
     }
 
 }
@@ -150,7 +150,8 @@ main img {
     #projectDetail {
         display: grid;
         place-items: baseline center;
-        height: 500px;
+        height: 100%;
+        width: 100%;
     }
     #imageDetails {
         display: grid;
