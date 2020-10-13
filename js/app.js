@@ -37,9 +37,10 @@ function showState(id, img, name) {
     getAPI(url).then(function (json) {
       showProjectDetail(json, img, name);
     });
+    openModal();
   }
   // call function to open modal
-  openModal();
+  
 }
 
 function showProjectDetail(json, img, name) {
