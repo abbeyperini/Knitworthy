@@ -60,7 +60,7 @@ let lengths = [
     },
     {
     name: "the Belmont Stakes",
-    description: "horse racing track",
+    description: "a horse racing track",
     dimension: "length",
     length: 2640
     },
@@ -72,7 +72,7 @@ let lengths = [
     },
     {
     name: "the Kentucky Derby",
-    description: "horse racing track",
+    description: "a horse racing track",
     dimension: "length",
     length: 2200 
     },

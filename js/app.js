@@ -5,8 +5,6 @@ let projectDetail = document.getElementById("projectDetail");
 let modal = document.getElementById("simpleModal");
 let closeBtn = document.getElementById("closeBtn");
 
-const sort1 = lengths.sort((a,b)=> a.length - b.length)
-
 
 nameSearch.addEventListener("click", () => {
   let name = nameInput.value;
@@ -25,8 +23,8 @@ function showProjects(json) {
                 </li>`;
   });
   profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
-
 }
+
 function showState(id, img, name) {
   if (id == "null") {
     window.alert(
@@ -38,21 +36,38 @@ function showState(id, img, name) {
       showProjectDetail(json, img, name);
     });
   }
-  // call function to open modal
-  openModal();
 }
 
 function showProjectDetail(json, img, name) {
-  
-  let lengthText = generateText(json.pattern.yardage_max)
-  let details = `<div id = "imageDetails">
-                    <p>${json.pattern.yardage_max}</p>
-                    <img src = '${img}'>
-                    <p id = "imageDetailsText">"${name}"</p>
-                    <p>${lengthText}</p>
-                    </div>`;
-  projectDetail.innerHTML = details;
+  if (json.pattern.yardage_max != null) {
+    let lengthText = generateText(name, json.pattern.yardage_max)
+    let details = `<div id = "imageDetails">
+                      <img src = '${img}'>
+                      <p>${lengthText}</p>
+                      </div>`;
+    projectDetail.innerHTML = details;
+    
+    // call function to open modal
+    openModal();
+
+  } else if (json.pattern.yardage != null) {
+    let lengthText = generateText(name, json.pattern.yardage)
+    let details = `<div id = "imageDetails">
+                      <img src = '${img}'>
+                      <p>${lengthText}</p>
+                      </div>`;
+    projectDetail.innerHTML = details;
+
+    // call function to open modal
+    openModal();
+
+  } else {
+    window.alert(
+      "Please choose a project with a pattern with a suggested yardage."
+    );
+  }  
 }
+
 // add function to show the modal
 function openModal() {
   modal.style.display = "block";
@@ -79,15 +94,22 @@ function getAPI(url) {
 
 }
 
-function generateText(size){
-  for(i=0; i < sort1.length; i++){
-    console.log(size)
-    if (size > sort1[i].length && size < sort1[i+1].length){
-      return `Your project used more yarn than the length of ${sort1[i].name}`
-    }
-    else{
-      return "too small"
+function generateText(name, size) {
+  console.log(size)
+  let coefficient = 1000000000000000;
+  let index = "";
+
+  for (i=0; i < lengths.length; i++) {
+    if ((lengths[i].length / size) < coefficient && (lengths[i].length / size) > 1) {
+      coefficient = lengths[i].length / size 
+      index = i;
     }
   }
 
+  if (lengths[index].description != null) {
+    let factDesc = lengths[index].description
+    return `The yarn in your ${name} project could span the ${lengths[index].dimension} of ${lengths[index].name}, ${factDesc}, ${coefficient.toFixed(2)} times`
+  } else {
+    return `The yarn in your ${name} project could span the ${lengths[index].dimension} of ${lengths[index].name} ${coefficient.toFixed(2)} times`
+  }
 }
