@@ -112,11 +112,15 @@ main img {
     text-decoration: none;
     cursor: pointer;
 }
+.projectInfoBtns {
+    display: flex;
+    place-content: center;
+}
 
 @media only screen and (min-width: 461px) {
     #profileInfo {
         width: 900px;
-        height: 1000px;
+        height: 500px;
         margin-left: 0;
     }
     .logo {
@@ -126,7 +130,7 @@ main img {
     #projectDetail {
         display: grid;
         place-items: baseline center;
-        height: 500px;
+        height: 400px;
     }
     #imageDetails {
         display: grid;
@@ -135,6 +139,9 @@ main img {
     #imageDetailsText {
         margin: auto;
         text-align: center;
+    }
+    .modal-content {
+        width: 700px;
     }
 
 }
