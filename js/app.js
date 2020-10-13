@@ -5,8 +5,17 @@ let projectDetail = document.getElementById("projectDetail");
 let modal = document.getElementById("simpleModal");
 let closeBtn = document.getElementById("closeBtn");
 
+// Making username accept when enter
 
-
+nameInput.addEventListener('keypress',function(e){
+  if(e.key=='Enter'){
+    let name = this.value;
+    let url = `https://api.ravelry.com/projects/${name}/list.json`;
+  getAPI(url).then(function (json) {
+    showProjects(json);
+  });
+  }
+})
 nameSearch.addEventListener("click", () => {
   let name = nameInput.value;
   let url = `https://api.ravelry.com/projects/${name}/list.json`;
@@ -78,14 +87,6 @@ closeBtn.addEventListener("click", closeModal);
 
 function closeModal() {
   modal.style.display = "none";
-}
-
-// function to close modal if click outside
-window.addEventListener("click", outsideClick)
-function outsideClick(click) {
-  if(click.target == modal){
-    modal.style.display = "none";
-  }
 }
 
 //function to fetch data from ravelry
