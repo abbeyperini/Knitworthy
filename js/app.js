@@ -43,7 +43,7 @@ function showState(id, img, name) {
 
 function showProjectDetail(json, img, name) {
   
-  let lenghtText = generateText(json.pattern.yardage_max)
+  let lengthText = generateText(json.pattern.yardage_max)
   let details = `<div id = "imageDetails">
                     <p>${json.pattern.yardage_max}</p>
                     <img src = '${img}'>
@@ -79,9 +79,12 @@ function getAPI(url) {
 
 function generateText(size){
   for(i=0; i < sort1.length; i++){
+    console.log(size)
     if (size > sort1[i].length && size < sort1[i+1].length){
       return `Your project used more yarn than the length of ${sort1[i].name}`
     }
-
+    else{
+      return "too small"
+    }
   }
 }
