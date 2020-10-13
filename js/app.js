@@ -4,6 +4,7 @@ let profileInfo = document.getElementById("profileInfo");
 let projectDetail = document.getElementById("projectDetail");
 let modal = document.getElementById("simpleModal");
 let closeBtn = document.getElementById("closeBtn");
+window.addEventListener("click",outsideClick)
 
 // Making username accept when enter
 
@@ -107,6 +108,13 @@ closeBtn.addEventListener("click", closeModal);
 
 function closeModal() {
   modal.style.display = "none";
+}
+
+//Function to close modal when click outside
+function outsideClick(click){
+  if(click.target == modal){
+    modal.style.display = "none"
+  }
 }
 
 //function to fetch data from ravelry
