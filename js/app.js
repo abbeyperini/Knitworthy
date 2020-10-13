@@ -90,6 +90,8 @@ function getAPI(url) {
     .then(function (json) {
       console.log(json);
       return json;
+    }).catch(function(error){
+      window.alert("Your Username Is not Available!")
     });
 
 }
@@ -105,7 +107,7 @@ function generateText(name, size) {
       index = i;
     }
   }
-
+  
   if (lengths[index].description != null) {
     let factDesc = lengths[index].description
     return `The yarn in your ${name} project could span the ${lengths[index].dimension} of ${lengths[index].name}, ${factDesc}, ${coefficient.toFixed(2)} times`
