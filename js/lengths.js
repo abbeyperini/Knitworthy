@@ -8,19 +8,22 @@ let lengths = [
     length: 4048
     },
     {
+
     name: "an airport runway",
     description: null,
     dimension: "length",
     length: 3663.605
     },
     {
+
     name: "a football field",
     description: null,
     dimension: "length",
     length: 120.297
     },
     {
-    name: "the Symphony of hte Seas",
+
+    name: "the Symphony of the Seas",
     description: "world's largest cruise ship",
     dimension: "length",
     length: 394.8
@@ -33,7 +36,7 @@ let lengths = [
     },
     {
     name: "Mt. Denali",
-    description: "tallest mountain in United States",
+    description: "tallest mountain in the United States",
     dimension: "elevation",
     length: 6770
     },

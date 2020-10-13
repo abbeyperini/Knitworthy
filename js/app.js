@@ -5,6 +5,9 @@ let projectDetail = document.getElementById("projectDetail");
 let modal = document.getElementById("simpleModal");
 let closeBtn = document.getElementById("closeBtn");
 
+const sort1 = lengths.sort((a,b)=> a.length - b.length)
+
+
 nameSearch.addEventListener("click", () => {
   let name = nameInput.value;
   let url = `https://api.ravelry.com/projects/${name}/list.json`;
@@ -22,6 +25,7 @@ function showProjects(json) {
                 </li>`;
   });
   profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
+
 }
 function showState(id, img, name) {
   if (id == "null") {
@@ -34,32 +38,20 @@ function showState(id, img, name) {
       showProjectDetail(json, img, name);
     });
   }
+  // call function to open modal
+  openModal();
 }
 
 function showProjectDetail(json, img, name) {
-  if (json.pattern.yardage_max != null) {
-    let details = `<div id = "imageDetails">
-                      <p>${json.pattern.yardage_max}</p>
-                      <img src = '${img}'>
-                      <p id = "imageDetailsText">"${name}"</p>
-                      </div>`;
-    projectDetail.innerHTML = details;
-    // call function to open modal
-    openModal();
-  } else if (json.pattern.yardage != null) { 
-    let details = `<div id = "imageDetails">
-                      <p>${json.pattern.yardage}</p>
-                      <img src = '${img}'>
-                      <p id = "imageDetailsText">"${name}"</p>
-                      </div>`;
-    projectDetail.innerHTML = details;
-    // call function to open modal
-    openModal();
-  } else {
-    window.alert(
-      "Please choose a project with a pattern that has a suggested yardage."
-    );
-  }
+  
+  let lengthText = generateText(json.pattern.yardage_max)
+  let details = `<div id = "imageDetails">
+                    <p>${json.pattern.yardage_max}</p>
+                    <img src = '${img}'>
+                    <p id = "imageDetailsText">"${name}"</p>
+                    <p>${lengthText}</p>
+                    </div>`;
+  projectDetail.innerHTML = details;
 }
 // add function to show the modal
 function openModal() {
@@ -84,4 +76,18 @@ function getAPI(url) {
       console.log(json);
       return json;
     });
+
+}
+
+function generateText(size){
+  for(i=0; i < sort1.length; i++){
+    console.log(size)
+    if (size > sort1[i].length && size < sort1[i+1].length){
+      return `Your project used more yarn than the length of ${sort1[i].name}`
+    }
+    else{
+      return "too small"
+    }
+  }
+
 }
