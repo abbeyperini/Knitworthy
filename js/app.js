@@ -87,9 +87,8 @@ function generateText(size){
     if (size > sort1[i].length && size < sort1[i+1].length){
       return `Your project used more yarn than the length of ${sort1[i].name}`
     }
-    else{
-      return "too small"
-    }
   }
+  
+  return "too small"
 
 }
