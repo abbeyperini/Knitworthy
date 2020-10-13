@@ -53,20 +53,22 @@ function showState(id, img, name) {
 }
 
 function showTime(completed, started, img, name) {
-  // condition for nulls
-  
-  let startDate = new Date(started)
-  let endDate = new Date(completed)
-  let totalTime = (((((endDate - startDate) / 1000) / 60) / 60) / 24)
-  let timeText = generateTimeText(name, totalTime)
-  let details = `<div>
-                    <img src = '${img}'>
-                    <p>${timeText}</p>
-                </div>`
+  if (started != null && completed != null) {
+    let startDate = new Date(started)
+    let endDate = new Date(completed)
+    let totalTime = ((((((endDate - startDate) / 1000) / 60) / 60) / 24) * .125)
+    let timeText = generateTimeText(name, totalTime)
+    let details = `<div>
+                      <img src = '${img}'>
+                      <p>${timeText}</p>
+                  </div>`
 
-  projectDetail.innerHTML = details;
-  // call function to open modal
-  openModal();
+    projectDetail.innerHTML = details;
+    // call function to open modal
+    openModal();
+  } else {
+    window.alert("Please choose a project with a started and completed date.")
+  }
 }
 
 function showProjectDetail(json, img, name) {
@@ -154,7 +156,23 @@ function generateText(name, size) {
   }
 }
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
 function generateTimeText(name, time) {
   console.log(time)
-  return "Placeholder until library built."
+  index = "";
+  let coefficient = 0;
+  while (true) {
+    let ranIndex = getRandomInt(0, times.length)
+    if ((times[ranIndex].time / time) > 1) {
+      index = ranIndex
+      coefficient = times[index].time / time
+      break
+    }
+  }
+  return `In the time it took you to make your ${name} project, you could ${times[index].task} ${coefficient.toFixed(2)} times (assuming you worked on it 3 hours every day).`
 }
