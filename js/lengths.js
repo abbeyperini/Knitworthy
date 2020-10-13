@@ -24,7 +24,7 @@ let lengths = [
     {
 
     name: "the Symphony of the Seas",
-    description: "world's largest cruise ship",
+    description: "the world's largest cruise ship",
     dimension: "length",
     length: 394.8
     },
@@ -36,7 +36,7 @@ let lengths = [
     },
     {
     name: "Mt. Denali",
-    description: "tallest mountain in the United States",
+    description: "the tallest mountain in the United States",
     dimension: "elevation",
     length: 6770
     },
@@ -48,13 +48,13 @@ let lengths = [
     },
     {
     name: "the Steel Dragon 2000",
-    description: "world's largest roller coaster",
+    description: "the world's largest roller coaster",
     dimension: "length",
     length: 2711
     },
     {
     name: "the National Mall",
-    description: "D.C. park home to the Lincoln Memorial and Washington Monument",
+    description: "the D.C. park home to the Lincoln Memorial and Washington Monument",
     dimension: "length",
     length: 3000 
     },
@@ -198,7 +198,7 @@ let lengths = [
     },
     {
     name: "the Grand Canyon Skywalk",
-    description: "horseshoe-shaped glass bridge extends 70 feet out over the rim of the Grand Canyon",
+    description: "a horseshoe-shaped glass bridge extends 70 feet out over the rim of the Grand Canyon",
     dimension: "height",
     length: 1200
     }
