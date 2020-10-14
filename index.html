@@ -9,22 +9,33 @@
         <link rel="shortcut icon" href="images/Knitworthy.svg" type="image/x-icon">
     </head>
     <body>
-        <header><img src="images/Knitworthy.svg" alt="Knitworthy logo" class = "logo"></header>
-        
-        <div class="usernameSearch">
-            <input id = "username" type="text" placeholder=" Ravelry Username">
-            <button id = "nameSearch">Submit</button>
-        </div>
-
-        <ul id = "profileInfo"></ul>
-        <div id="simpleModal" class="modal">
-            <div class="modal-content">
-                <span id="closeBtn" class="closeBtn">&times;</span>
-                <div id="projectDetail"></div>
+        <header>
+            <p>Help your gift recipient become knitworthy by sharing fun facts about the time and yarn that went into your project!
+                Just enter your Ravelry username below to get started.</p>
+            <img src="images/Knitworthy.svg" alt="Knitworthy logo" class = "logo">
+        </header>
+        <nav>
+            <div class="usernameSearch">
+                <input id = "username" type="text" placeholder=" Ravelry Username">
+                <button id = "nameSearch">Submit</button>
             </div>
-        </div>
-        
-    
+            <button>Filters</button>
+        </nav>
+        <main>
+            <div class="mainContain">
+                <ul id = "profileInfo"></ul>
+                <div id="simpleModal" class="modal">
+                    <div class="modal-content">
+                        <span id="closeBtn" class="closeBtn">&times;</span>
+                        <div id="projectDetail"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <button><a href="cards.html">Team</a></button>
+            <p>&copy; 2020</p>
+        </footer>
     </body>
     <script src="js/keys.js"></script>
     <script src="js/times.js"></script>

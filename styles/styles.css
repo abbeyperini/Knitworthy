@@ -1,3 +1,8 @@
+/* powder-blue: #B4DCDB; */
+/* salmon: #ED786D; */
+/* dark blue gray: #685B86 */
+/* ming: #685B86 */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,25 +12,69 @@
 html {
     color: #685B86;
     font-family: 'Vidaloka', serif;
+    height: 100%;
 }
 
 body { 
+    background-image: linear-gradient(to right top,#685b86, #55608b, #40648d, #29688a, #106b84, #217588, #307e8b, #40888e, #5f9ca0, #7bb1b3, #98c6c7,#b4dcdb, #b4dcdb);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.mainContain {
     overflow: hidden;
     display: grid;
     place-items: center;
-    background-image: linear-gradient(to right top,#685b86, #55608b, #40648d, #29688a, #106b84, #217588, #307e8b, #40888e, #5f9ca0, #7bb1b3, #98c6c7,#b4dcdb, #b4dcdb);
 }
 
-header, .userHolder {
+.userHolder {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    font-size: 1em;
+}
+
+header p {
+    width: 200px;
+    font-size: 1em;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 2em;
+    background:rgba(255,255,255, 0.1);
+}
+
+nav button {
+    padding: 15px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.usernameSearch button {
+    margin-left: 5px;
+    margin-right: 20%;
 }
 
 .usernameSearch, .projectHolder {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+nav {
+    padding: 15px;
 }
 
 img {
@@ -36,41 +85,44 @@ p {
     padding: 10px;
     margin: 5px;
 }
-    /* powder-blue: #B4DCDB; */
-    /* salmon: #ED786D; */
-    /* dark blue gray: #685B86 */
-    /* ming: #016D77 */
 
 button {
-    background-color: #685B86;
+    background-color: #ED786D;
     border: none;
     color: white;
-    padding: 15px;
+    padding: 10px;
     margin: 2%;
     border-radius: 12px;
 }
 
 input {
     margin: 2%;
-}
-
-main img {
-    width: 200px;
-    border: 2px solid #ED786D;
+    background-color: #C9E4E4;
+    border-radius: 4px;
+    border-color: #685B86;
+    color: #685B86;
+    padding-left: 5px;
+    margin-left: 20%;
 }
 
 .projectInfo {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-end;
     margin: 2px;
-    border: 2px solid #685B86;
+    /* border: 2px solid #685B86; */
     border-radius: 8px;
+    background-color: #C9E4E4;
 }
 
 .projectInfo p {
     width: 200px;
     text-align: center;
+}
+
+.projectInfo img {
+    margin-bottom: 15px;
 }
 
 #profileInfo {
@@ -116,7 +168,29 @@ main img {
 .projectInfoBtns {
     display: flex;
     place-content: center;
+    margin-bottom: 15px;
 }
+
+footer {
+    background-color: rgba(255,255,255, 0.1);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+
+button:hover {
+    color: #685B86;
+}
+
+a:link, a:active, a:visited {
+    color: white;
+    text-decoration: none;
+  }
+  
+  a:hover, a:focus {
+    color: #685B86;
+  }
 
 @media only screen and (min-width: 461px) {
     #profileInfo {
@@ -147,6 +221,23 @@ main img {
         padding: 1rem;
     }
 
+    header p {
+        width: 600px;
+        font-size: 1.5em;
+    }
+    nav {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav button {
+        margin: 2%;
+    }
+
+    .usernameSearch button {
+        margin-right: 30%;
+    }
 }
 
 @media (min-width: 300px) and (max-width: 461px) {
