@@ -58,7 +58,7 @@ function showTime(completed, started, img, name) {
     let endDate = new Date(completed)
     let totalTime = ((((((endDate - startDate) / 1000) / 60) / 60) / 24) * .125)
     let timeText = generateTimeText(name, totalTime)
-    let details = `<div>
+    let details = `<div id = "imageDetails">
                       <img src = '${img}'>
                       <p>${timeText}</p>
                   </div>`
