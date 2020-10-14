@@ -19,11 +19,17 @@
                 <input id = "username" type="text" placeholder=" Ravelry Username">
                 <button id = "nameSearch">Submit</button>
             </div>
-            <button>Filters</button>
-            <button id="filterpopularity">Filter By Most favourite</button>
-            <button id="byNewest">Filter by Newest</button>
-            <button id="byOldest">Filter by Oldest</button>
-            <button id="completedStatus">Completed Only</button>
+            <ul class="menu-container">
+                <li class='dropdown'>
+                  <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="menu-dropdown">Filters</button>
+                  <ul class="dropdown__menu" id="menu-dropdown">
+                    <button id="filterpopularity">Filter By Most favourite</button>
+                    <button id="byNewest">Filter by Newest</button>
+                    <button id="byOldest">Filter by Oldest</button>
+                    <button id="completedStatus">Completed Only</button>
+                  </ul>
+                </li>
+              </ul> 
         </nav>
         <main>
             <div class="mainContain">

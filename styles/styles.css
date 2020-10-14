@@ -197,6 +197,89 @@ a:link, a:active, a:visited {
     color: #685B86;
   }
 
+/* dropdown menu styling */
+.menu-container {
+    background-color: none;
+    padding: 0 1rem;
+    display: grid;
+    place-items: center;
+  }
+  
+  .menu-container li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+  }
+  
+  .dropdown__menu {
+    grid-auto-flow: column;
+  }
+  
+  .dropdown__menu li {
+    margin: 0 0.5rem;
+  }
+  
+  .dropdown__title {
+    background-color: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 1.125rem;
+    text-align: center;
+  }
+  
+  .dropdown__title a {
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.125rem;
+    padding: 1rem 0.5rem;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown__menu {
+    background-color: rgba(255,255,255, 0.1);
+    border-radius: 4px;
+    box-shadow: 0 0.15em 0.25em rgba(black, 0.25);
+    padding: 0.5em 0;
+    min-width: 9ch;
+    position: absolute;
+    top: calc(100% - 0.25rem);
+    left: 50%;
+    transform: translateX(-50%);
+    transform: rotateX(-90deg) translateX(-50%);
+    transform-origin: top center;
+    opacity: 0.3;
+    transition: 280ms all 120ms ease-out;
+  }
+  
+  .dropdown__menu a {
+    display: block;
+    padding: 0.5em;
+  }
+  
+  /* .dropdown .ally-focus-within:focus .dropdown__menu */
+  
+  .dropdown:hover .dropdown__menu, .dropdown:focus-within .dropdown__menu {
+    opacity: 1;
+    transform: rotateX(0) translateX(-50%);
+    visibility: visible;
+  }
+  
+  .dropdown__title:after {
+    content: "";
+    border: 0.35rem solid transparent;
+    border-top-color: rgba(blue, 0.45);
+    margin-left: 0.25em;
+    transform: translateY(0.15em);
+  }
+  /* dropdown menu styling */
+
 @media only screen and (min-width: 461px) {
     #profileInfo {
         width: 900px;
@@ -243,6 +326,10 @@ a:link, a:active, a:visited {
     .usernameSearch button {
         margin-right: 30%;
     }
+
+    .dropdown__menu {
+        min-width: 15ch;
+      }
 }
 
 @media (min-width: 300px) and (max-width: 461px) {
