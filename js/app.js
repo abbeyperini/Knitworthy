@@ -57,19 +57,32 @@ function showState(id, img, name) {
 }
 
 function showTime(completed, started, img, name) {
-  if (started != null && completed != null) {
+  if (started != "null" && completed != "null") {
     let startDate = new Date(started)
     let endDate = new Date(completed)
-    let totalTime = ((((((endDate - startDate) / 1000) / 60) / 60) / 24) * .125)
-    let timeText = generateTimeText(name, totalTime)
-    let details = `<div id = "imageDetails">
-                      <img src = '${img}'>
-                      <p>${timeText}</p>
-                  </div>`
+    if (startDate - endDate == 0) {
+      let totalTime = 3;
+      let timeText = generateTimeText(name, totalTime)
+      let details = `<div id = "imageDetails">
+                        <img src = '${img}'>
+                        <p>${timeText}</p>
+                    </div>`
 
-    projectDetail.innerHTML = details;
-    // call function to open modal
-    openModal();
+      projectDetail.innerHTML = details;
+      // call function to open modal
+      openModal();
+    } else {
+      let totalTime = (((endDate - startDate) / 3600000) * .125)
+      let timeText = generateTimeText(name, totalTime)
+      let details = `<div id = "imageDetails">
+                        <img src = '${img}'>
+                        <p>${timeText}</p>
+                    </div>`
+
+      projectDetail.innerHTML = details;
+      // call function to open modal
+      openModal();
+    }
   } else {
     window.alert("Please choose a project with a started and completed date.")
   }
@@ -172,9 +185,9 @@ function generateTimeText(name, time) {
   let coefficient = 0;
   while (true) {
     let ranIndex = getRandomInt(0, times.length)
-    if ((times[ranIndex].time / time) > 1) {
+    if ((time / times[ranIndex].time) > 1) {
       index = ranIndex
-      coefficient = times[index].time / time
+      coefficient = time / times[index].time
       break
     }
   }
