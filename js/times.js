@@ -81,6 +81,14 @@ let times =
     {
         task : "digest a meal",
         time : 8
+    },
+    {
+        task: "play a basketball game",
+        time: .8
+    },
+    {
+        task: "watch a Quibi",
+        time: .166
     }
 
 ]
