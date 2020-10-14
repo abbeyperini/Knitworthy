@@ -77,6 +77,8 @@ function showProjectDetail(json, img, name) {
     let details = `<div id = "imageDetails">
                       <img src = '${img}'>
                       <p>${lengthText}</p>
+                      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false" target="_blank">Here are my project stats</a>
+                      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                       </div>`;
     projectDetail.innerHTML = details;
     
