@@ -13,6 +13,7 @@ body {
     overflow: hidden;
     display: grid;
     place-items: center;
+    background-image: linear-gradient(to right top,#685b86, #55608b, #40648d, #29688a, #106b84, #217588, #307e8b, #40888e, #5f9ca0, #7bb1b3, #98c6c7,#b4dcdb, #b4dcdb);
 }
 
 header, .userHolder {
