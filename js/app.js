@@ -23,7 +23,7 @@ nameInput.addEventListener('keypress',function(e){
   }
 })
 nameSearch.addEventListener("click", () => {
-  let name = nameInput.value;
+  name = nameInput.value;
   let url = `https://api.ravelry.com/projects/${name}/list.json`;
   getAPI(url).then(function (json) {
     showProjects(json);
