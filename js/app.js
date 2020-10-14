@@ -26,6 +26,10 @@ nameSearch.addEventListener("click", () => {
 });
 
 function showProjects(json) {
+  while (profileInfo.firstChild) {
+    profileInfo.removeChild(profileInfo.firstChild)
+  };
+
   let projects = json.projects.map((project) => {
     return `<li class = "projectInfo">
                     <p>${project.name}</p>
