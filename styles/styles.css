@@ -81,6 +81,8 @@ main img {
     height: 580px;
     margin-left: 8%;
     margin-top: 2%;
+    -ms-overflow-style:none;
+    scrollbar-width: none;
 }
 
 .modal{
@@ -115,6 +117,9 @@ main img {
 .projectInfoBtns {
     display: flex;
     place-content: center;
+}
+::-webkit-scrollbar {
+    display: none;
 }
 
 @media only screen and (min-width: 461px) {
