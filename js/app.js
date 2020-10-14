@@ -4,13 +4,18 @@ let profileInfo = document.getElementById("profileInfo");
 let projectDetail = document.getElementById("projectDetail");
 let modal = document.getElementById("simpleModal");
 let closeBtn = document.getElementById("closeBtn");
+let filterPopularityBTN = document.getElementById("filterpopularity")
+let filterNewest = document.getElementById("byNewest")
+let filterOldest = document.getElementById("byOldest")
+let filterComplete = document.getElementById("completedStatus")
 window.addEventListener("click",outsideClick)
 
 // Making username accept when enter
 
+var name
 nameInput.addEventListener('keypress',function(e){
   if(e.key=='Enter'){
-    let name = this.value;
+    name = this.value;
     let url = `https://api.ravelry.com/projects/${name}/list.json`;
   getAPI(url).then(function (json) {
     showProjects(json);
@@ -192,4 +197,107 @@ function generateTimeText(name, time) {
     }
   }
   return `In the time it took you to make your ${name} project, you could ${times[index].task} ${coefficient.toFixed(2)} times (assuming you worked on it 3 hours every day).`
+}
+
+//add function to popularity filter button
+filterPopularityBTN.addEventListener("click",()=>{
+  let url = `https://api.ravelry.com/projects/${name}/list.json`
+  getAPI(url).then(function(json){
+    showFilterProjects(json)
+  })
+  console.log(url)
+})
+
+function showFilterProjects(json){
+  profileInfo.innerHTML = ""
+  let filter = json.projects.sort((a,b)=> b.favorites_count - a.favorites_count)
+  console.log(filter)
+  let projects = filter.map((project) => {
+    return `<li class = "projectInfo">
+                    <p>${project.name}</p>
+                    <img src = ${project.first_photo.square_url}>
+                    <div class="projectInfoBtns">
+                      <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Yardage</button>
+                      <button onclick="showTime('${project.completed}', '${project.started}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Time</button>
+                    </div>
+                </li>`;
+  });
+  profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
+}
+
+//add Function to filter by Newest
+filterNewest.addEventListener("click",()=>{
+  let url = `https://api.ravelry.com/projects/${name}/list.json`
+  getAPI(url).then(function(json){
+    filterbyNewest(json)
+  })
+  console.log(url)
+})
+
+function filterbyNewest(json){
+  profileInfo.innerHTML = ""
+  let filter = json.projects.sort((a,b)=> b.id - a.id)
+  let projects = filter.map((project) => {
+    return `<li class = "projectInfo">
+                    <p>${project.name}</p>
+                    <img src = ${project.first_photo.square_url}>
+                    <div class="projectInfoBtns">
+                      <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Yardage</button>
+                      <button onclick="showTime('${project.completed}', '${project.started}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Time</button>
+                    </div>
+                </li>`;
+  });
+  profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
+}
+
+//add function to filter by Oldest
+filterOldest.addEventListener("click",()=>{
+  let url = `https://api.ravelry.com/projects/${name}/list.json`
+  getAPI(url).then(function(json){
+    filterbyOldest(json)
+  })
+  console.log(url)
+})
+
+function filterbyOldest(json){
+  profileInfo.innerHTML = ""
+  let filter = json.projects.sort((a,b)=> a.id - b.id)
+  let projects = filter.map((project) => {
+    return `<li class = "projectInfo">
+                    <p>${project.name}</p>
+                    <img src = ${project.first_photo.square_url}>
+                    <div class="projectInfoBtns">
+                      <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Yardage</button>
+                      <button onclick="showTime('${project.completed}', '${project.started}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Time</button>
+                    </div>
+                </li>`;
+  });
+  profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
+}
+
+//Add function to filter only completed project
+filterComplete.addEventListener("click",()=>{
+  let url = `https://api.ravelry.com/projects/${name}/list.json`
+  getAPI(url).then(function(json){
+    filterComp(json)
+  })
+  console.log(url)
+})
+
+function filterComp(json){
+  profileInfo.innerHTML = ""
+  let filter = json.projects.filter(project=>(
+    project.completed
+  ))
+  let projects = filter.map((project) => {
+    return `<li class = "projectInfo">
+                    <p>${project.name}</p>
+                    <img src = ${project.first_photo.square_url}>
+                    <div class="projectInfoBtns">
+                      <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Yardage</button>
+                      <button onclick="showTime('${project.completed}', '${project.started}', '${project.first_photo.square_url}', '${project.name.replace(/'/g,"\\'")}')">Time</button>
+                    </div>
+                </li>`;
+  });
+  profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
 }
