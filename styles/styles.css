@@ -128,9 +128,8 @@ main img {
         height: 300px;
     }
     #projectDetail {
-        display: grid;
-        place-items: center;
-        height: 100%;
+        height: 250px;
+        width: 100%;
     }
     #imageDetails {
         display: grid;
@@ -141,16 +140,17 @@ main img {
         text-align: center;
     }
     .modal-content {
-        width: 25%;
+        width: clamp(10ch, 25%, 26ch);
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
     }
 
 }
 
 @media (min-width: 300px) and (max-width: 461px) {
     #projectDetail {
-        display: grid;
-        place-items: baseline center;
-        height: 100%;
+        height: 250px;
         width: 100%;
     }
     #imageDetails {
@@ -167,5 +167,11 @@ main img {
     }
     #profileInfo {
         margin: 0px;
+    }
+    .modal-content {
+        width: clamp(30ch, 25%, 36ch);
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
     }
 }
