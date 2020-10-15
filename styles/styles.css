@@ -73,13 +73,13 @@ nav button {
     justify-content: center;
 }
 
-nav {
+/* nav {
     padding: 15px;
-}
+} */
 
-img {
+/* img {
     margin: 2%;
-}
+} */
 
 p {
     padding: 10px;
@@ -91,7 +91,6 @@ button {
     border: none;
     color: white;
     padding: 10px;
-    margin: 2%;
     border-radius: 12px;
 }
 
@@ -133,7 +132,7 @@ input {
     width: 300px;
     height: 580px;
     margin-left: 8%;
-    margin-top: 2%;
+    margin-top: 1%;
     -ms-overflow-style:none;
     scrollbar-width: none;
 }
@@ -207,6 +206,7 @@ button:hover, button:focus {
     padding: 0 1rem;
     display: grid;
     place-items: center;
+    height: 59px;
   }
   
   .menu-container li {
@@ -289,7 +289,7 @@ button:hover, button:focus {
 @media only screen and (min-width: 461px) {
     #profileInfo {
         width: 900px;
-        height: 500px;
+        height: 487px;
         margin-left: 0;
     }
     .logo {
