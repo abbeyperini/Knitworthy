@@ -4,10 +4,41 @@
 #team {
     background: #eee !important;
 }
-
+body { 
+    background-image: linear-gradient(to right top,#685b86, #55608b, #40648d, #29688a, #106b84, #217588, #307e8b, #40888e, #5f9ca0, #7bb1b3, #98c6c7,#b4dcdb, #b4dcdb);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    font-size: 1em;
+    line-height: 1.4;
+}
 .logo {
     width: 300px;
     height: 300px;
+    margin: 2%;
+}
+
+header p {
+    width: 600px;
+    font-size: 1.5em;
+    font-family: 'Vidaloka', serif;
+}
+footer {
+    background-color: rgba(255,255,255, 0.1);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+a {
+    color: white;
 }
 
 .btn-primary:hover,
@@ -135,4 +166,16 @@ section .section-title {
 .frontside .card .card-text{
     font-size: 20px;
     font-weight: bold;
+}
+
+@media (min-width: 300px) and (max-width: 461px) {
+    header p {
+        width: 200px;
+        font-size: 1em;
+    }
+    .logo {
+        width: 150px;
+        height: 150px;
+    }
+
 }
