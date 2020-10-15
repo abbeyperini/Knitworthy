@@ -59,7 +59,7 @@ function showProjects(json) {
       }else{
         return `<li class = "projectInfo">
                         <p>${projectName}</p>
-                        <img src ="images/placeholder.jpg" style ="width:10%">
+                        <img src ="images/placeholder.jpg" >
                         <div class="projectInfoBtns">
                           <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
                           <button onclick="showTime('${project.completed}', '${project.started}', 'images/placeholder.jpg', '${projectName}')">Time</button>
@@ -264,7 +264,7 @@ function showFilterProjects(json){
     }else{
       return `<li class = "projectInfo">
                       <p>${projectName}</p>
-                      <img src ="images/placeholder.jpg" style ="width:10%">
+                      <img src ="images/placeholder.jpg" >
                       <div class="projectInfoBtns">
                         <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
                         <button onclick="showTime('${project.completed}', '${project.started}', 'images/placeholder.jpg', '${projectName}')">Time</button>
@@ -306,7 +306,7 @@ function filterbyNewest(json){
     }else{
       return `<li class = "projectInfo">
                       <p>${project.name}</p>
-                      <img src ="images/placeholder.jpg" style ="width:10%">
+                      <img src ="images/placeholder.jpg" >
                       <div class="projectInfoBtns">
                         <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
                         <button onclick="showTime('${project.completed}', '${project.started}', 'images/placeholder.jpg', '${projectName}')">Time</button>
@@ -348,7 +348,7 @@ function filterbyOldest(json){
     }else{
       return `<li class = "projectInfo">
                       <p>${projectName}</p>
-                      <img src ="images/placeholder.jpg" style ="width:10%">
+                      <img src ="images/placeholder.jpg" >
                       <div class="projectInfoBtns">
                         <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
                         <button onclick="showTime('${project.completed}', '${project.started}', 'images/placeholder.jpg', '${projectName}')">Time</button>
@@ -392,7 +392,7 @@ function filterComp(json){
     }else{
       return `<li class = "projectInfo">
                       <p>${projectName}</p>
-                      <img src ="images/placeholder.jpg" style ="width:10%">
+                      <img src ="images/placeholder.jpg" >
                       <div class="projectInfoBtns">
                         <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
                         <button onclick="showTime('${project.completed}', '${project.started}', 'images/placeholder.jpg', '${projectName}')">Time</button>
