@@ -114,7 +114,7 @@ input {
     border-radius: 8px;
     background-color: #C9E4E4;
     width: clamp(210px, 50%, 210px);
-    height: clamp(189px, 50%, 189px);
+    height: clamp(210px, 50%, 210px);
 }
 
 .projectInfo p {
