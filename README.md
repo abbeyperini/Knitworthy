@@ -1,14 +1,11 @@
 <h1> Knitworthy </h1>
 
-- In the knitting/crochet/fiber arts community, someone who appreciates a handmade gift and takes care of it is considered "knitworthy." Ravelry, a fiber arts website with over 9 million users, created a hub for sharing information about materials and techniques and a way to exchange and sell patterns in pdf form. Users can keep track of their yarn and their projects, entering stats about when they started and finished, the yarn they used, etc. Knitworthy will use the Ravelry API to generate facts that put the amount of love that goes into a handmade fiber arts gift into perspective for a layman. For example, selecting the project below, a crochet blanket made following the pattern Rings of Change by Frank O'Randle, would result in a fact like "The yarn in your Rings of Change project could stretch the width of Manhattan Island 1.48 times."
-
-<img src="screenshots/ringsOfChange.jpg" alt="A crochet blanket in teal yarn made following the pattern Rings of Change by Frank O'Randle" width="600" height="500">
+- In the knitting/crochet/fiber arts community, someone who appreciates a handmade gift and takes care of it is considered "knitworthy." Ravelry, a fiber arts website with over 9 million users, created a hub for sharing information about materials and techniques and a way to exchange and sell patterns in pdf form. Users can keep track of their yarn and their projects, entering stats about when they started and finished, the yarn they used, etc. Knitworthy uses the Ravelry API to generate fun facts about the time and yarn that went into a Raverly user's project.
 
 <h2> Summary </h2>
 
+  - [About the Project](#about-the-project)
   - [Getting Started](#getting-started)
-  - [Runing the tests](#running-the-tests)
-  - [Deployment](#deployment)
   - [Built With](#built-with)
   - [Contributing](#contributing)
   - [Versioning](#versioning)
@@ -16,66 +13,33 @@
   - [Screenshots](#screenshots)
   - [Acknowledgments](#acknowledgments)
 
-## Getting Started
+## About the Project
 
 These instructions will get you a copy of the project up and running on
 your local machine for development and testing purposes. See deployment
 for notes on how to deploy the project on a live system.
 
-### Prerequisites
+## Getting Started
 
-What things you need to install the software and how to install them.
-You will have a better understanding of what goes here next week.
+### Installation
 
-    Give examples like what node modules are required
-    nodemon 
-    express version => 3.3
-    uuid version =< v1.01
-    etc
-
-### Installing
-
-A step by step series of examples that tell you how to get a development
-env running
-
-Say what the step will be - **First Install express-router** -
-
-    Give the example: 
-    npm install express-router
-
-And repeat all steps
-
-    until finished
-
-End with an example of getting some data out of the system or using it
-for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-    Give an example
-
-### And coding style tests
-
-Explain what these tests test and why
-
-    Give an example
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+1. Clone to local machine
+```sh
+git clone https://github.com/github_username/repo_name.git
+```
+2. You need an Basic Auth: Read Only API Key from the [Ravelry API](https://www.ravelry.com/api). Then add your API in `keys.js`
+```JS
+username = "ENTER YOUR API USERNAME";
+password = "ENTER YOUR API PASSWORD";
+```
 
 ## Built With
 
-  - [Contributor Covenant](https://www.contributor-covenant.org/) - Used
-    for the Code of Conduct
-  - [Creative Commons](https://creativecommons.org/) - Used to choose
-    the license
+  - [Javascript](https://www.javascript.com/)
+  - [HTML](https://html.spec.whatwg.org/)
+  - [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+  - [Bootstrap](https://getbootstrap.com/)
+  - [Cloudflare](https://www.cloudflare.com/)
 
 ## Contributing
 
@@ -90,10 +54,12 @@ repository](https://github.com/PurpleBooth/a-good-readme-template/tags).
 
 ## Authors
 
-  - **Billie Thompson** - *Provided README Template* -
+  - **Abbey Perini** - *Provided README Template* -
     [PurpleBooth](https://github.com/PurpleBooth)
-  - **Nathan Orris** - *The Certified* [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)- **DiR at DigitalCrafts Houston** -
+  - **Borinquen "Boris" Rodriguez** - *The Certified* [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)- **DiR at DigitalCrafts Houston** -
     [NathanNoSudo](https://github.com/NathanNoSudo)
+  - **Jonathan Nuno**
+  - **Hung Tran**
 
 ## Screenshots
 
