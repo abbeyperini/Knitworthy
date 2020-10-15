@@ -248,30 +248,25 @@ function showFilterProjects(json){
   console.log(filter)
   let projects = filter.map((project) => {
     let projectName = '';
+    let photo ='';
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
       projectName = project.name.replace(/'/g,"\'")
     }
-    if(project.first_photo){
-      return `<li class = "projectInfo">
-                      <p>${projectName}</p>
-                      <img src = ${project.first_photo.square_url}>
-                      <div class="projectInfoBtns">
-                        <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${projectName}')">Yardage</button>
-                        <button onclick="showTime('${project.completed}', '${project.started}', '${project.first_photo.square_url}', '${projectName}')">Time</button>
-                      </div>
-                  </li>`;
+    if(project.first_photo == null){
+      photo = 'images/placeholder.jpg'
     }else{
+      photo = project.first_photo.square_url
+    }
       return `<li class = "projectInfo">
                       <p>${projectName}</p>
-                      <img src ="images/placeholder.jpg" >
+                      <img src = ${photo}>
                       <div class="projectInfoBtns">
-                        <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
-                        <button onclick="showTime('${project.completed}', '${project.started}', 'images/placeholder.jpg', '${projectName}')">Time</button>
+                        <button onclick="showState('${project.pattern_id}', '${photo}', '${projectName}')">Yardage</button>
+                        <button onclick="showTime('${project.completed}', '${project.started}', '${photo}', '${projectName}')">Time</button>
                       </div>
                   </li>`;
-    }
   });
   profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
 }
@@ -290,30 +285,25 @@ function filterbyNewest(json){
   let filter = json.projects.sort((a,b)=> b.id - a.id)
   let projects = filter.map((project) => {
     let projectName = '';
+    let photo ='';
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
       projectName = project.name.replace(/'/g,"\'")
     }
-    if(project.first_photo){
+    if(project.first_photo == null){
+      photo = 'images/placeholder.jpg'
+    }else{
+      photo = project.first_photo.square_url
+    }
       return `<li class = "projectInfo">
                       <p>${projectName}</p>
-                      <img src = ${project.first_photo.square_url}>
+                      <img src = ${photo}>
                       <div class="projectInfoBtns">
-                        <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${projectName}')">Yardage</button>
-                        <button onclick="showTime('${project.completed}', '${project.started}', '${project.first_photo.square_url}', '${projectName}')">Time</button>
+                        <button onclick="showState('${project.pattern_id}', '${photo}', '${projectName}')">Yardage</button>
+                        <button onclick="showTime('${project.completed}', '${project.started}', '${photo}', '${projectName}')">Time</button>
                       </div>
                   </li>`;
-    }else{
-      return `<li class = "projectInfo">
-                      <p>${project.name}</p>
-                      <img src ="images/placeholder.jpg" >
-                      <div class="projectInfoBtns">
-                        <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
-                        <button onclick="showTime('${project.completed}', '${project.started}', 'images/placeholder.jpg', '${projectName}')">Time</button>
-                      </div>
-                  </li>`;
-    }
   });
   profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
 }
@@ -332,30 +322,25 @@ function filterbyOldest(json){
   let filter = json.projects.sort((a,b)=> a.id - b.id)
   let projects = filter.map((project) => {
     let projectName = '';
+    let photo ='';
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
       projectName = project.name.replace(/'/g,"\'")
     }
-    if(project.first_photo){
-      return `<li class = "projectInfo">
-                      <p>${projectName}</p>
-                      <img src = ${project.first_photo.square_url}>
-                      <div class="projectInfoBtns">
-                        <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${projectName}')">Yardage</button>
-                        <button onclick="showTime('${project.completed}', '${project.started}', '${project.first_photo.square_url}', '${projectName}')">Time</button>
-                      </div>
-                  </li>`;
+    if(project.first_photo == null){
+      photo = 'images/placeholder.jpg'
     }else{
+      photo = project.first_photo.square_url
+    }
       return `<li class = "projectInfo">
                       <p>${projectName}</p>
-                      <img src ="images/placeholder.jpg" >
+                      <img src = ${photo}>
                       <div class="projectInfoBtns">
-                        <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
-                        <button onclick="showTime('${project.completed}', '${project.started}', 'images/placeholder.jpg', '${projectName}')">Time</button>
+                        <button onclick="showState('${project.pattern_id}', '${photo}', '${projectName}')">Yardage</button>
+                        <button onclick="showTime('${project.completed}', '${project.started}', '${photo}', '${projectName}')">Time</button>
                       </div>
                   </li>`;
-    }
   });
   profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
 }
@@ -376,30 +361,25 @@ function filterComp(json){
   ))
   let projects = filter.map((project) => {
     let projectName = '';
+    let photo ='';
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
       projectName = project.name.replace(/'/g,"\'")
     }
-    if(project.first_photo){
-      return `<li class = "projectInfo">
-                      <p>${projectName}</p>
-                      <img src = ${project.first_photo.square_url}>
-                      <div class="projectInfoBtns">
-                        <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${projectName}')">Yardage</button>
-                        <button onclick="showTime('${project.completed}', '${project.started}', '${project.first_photo.square_url}', '${projectName}')">Time</button>
-                      </div>
-                  </li>`;
+    if(project.first_photo == null){
+      photo = 'images/placeholder.jpg'
     }else{
+      photo = project.first_photo.square_url
+    }
       return `<li class = "projectInfo">
                       <p>${projectName}</p>
-                      <img src ="images/placeholder.jpg" >
+                      <img src = ${photo}>
                       <div class="projectInfoBtns">
-                        <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
-                        <button onclick="showTime('${project.completed}', '${project.started}', 'images/placeholder.jpg', '${projectName}')">Time</button>
+                        <button onclick="showState('${project.pattern_id}', '${photo}', '${projectName}')">Yardage</button>
+                        <button onclick="showTime('${project.completed}', '${project.started}', '${photo}', '${projectName}')">Time</button>
                       </div>
                   </li>`;
-    }
   });
   profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
 }
