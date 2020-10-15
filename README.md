@@ -1,10 +1,11 @@
 <h1> Knitworthy </h1>
 
-  <img src="images/Knitworthy2.png" width=300 height=500>
+  <img src="images/Knitworthy2.png" width=500 height=300>
 
 <h2> Summary </h2>
 
   - [About the Project](#about-the-project)
+  - [Usage](#usage)
   - [Videos and Screenshots](#videos-and-screenshots)
   - [Getting Started](#getting-started)
   - [Built With](#built-with)
@@ -16,9 +17,13 @@
 
 - In the knitting/crochet/fiber arts community, someone who appreciates a handmade gift and takes care of it is considered "knitworthy." Ravelry, a fiber arts website with over 9 million users, created a hub for sharing information about materials and techniques and a way to exchange and sell patterns in pdf form. Users can keep track of their yarn and their projects, entering stats about when they started and finished, the yarn they used, etc. Knitworthy uses the Ravelry API to generate fun facts about the time and yarn that went into a Ravelry user's project.
 
+## Usage
+
+- Knitworthy compares project data to real life time and length measurements to put the time and length of yarn that goes into a project into perspective for someone who does not knit or crochet.
+
 ## Videos and Screenshots
 
-<img src="knitworthygif.gif">
+<img src="https://github.com/abbeyperini/Knitworthy/blob/master/images/knitworthygif.gif">
 
 <img src="images/Screenshot.png" width=900 height=600>
 
