@@ -45,12 +45,13 @@ function showProjects(json) {
       if (project.name == null || project.name == "") {
         projectName = "No name"
       } else {
-        projectName = project.name.replace(/'/g,"\'")
+        projectName = project.name.replace(/'/g,"\\'")
+        titleName = project.name.replace(/'/g,"\'")
         console.log(projectName)
       }
       if(project.first_photo){
         return `<li class = "projectInfo">
-                        <p>${projectName}</p>
+                        <p>${titleName}</p>
                         <img src = ${project.first_photo.square_url}>
                         <div class="projectInfoBtns">
                           <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${projectName}')">Yardage</button>
@@ -59,7 +60,7 @@ function showProjects(json) {
                     </li>`;
       }else{
         return `<li class = "projectInfo">
-                        <p>${projectName}</p>
+                        <p>${titleName}</p>
                         <img src ="images/placeholder.jpg" >
                         <div class="projectInfoBtns">
                           <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
