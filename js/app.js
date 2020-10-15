@@ -47,7 +47,6 @@ function showProjects(json) {
       } else {
         projectName = project.name.replace(/'/g,"\\'")
         titleName = project.name.replace(/'/g,"\'")
-        console.log(projectName)
       }
       if(project.first_photo){
         return `<li class = "projectInfo">
