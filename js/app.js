@@ -45,7 +45,8 @@ function showProjects(json) {
       if (project.name == null || project.name == "") {
         projectName = "No name"
       } else {
-        projectName = project.name
+        projectName = project.name.replace(/'/g,"\'")
+        console.log(projectName)
       }
       if(project.first_photo){
         return `<li class = "projectInfo">
@@ -250,7 +251,7 @@ function showFilterProjects(json){
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
-      projectName = project.name
+      projectName = project.name.replace(/'/g,"\'")
     }
     if(project.first_photo){
       return `<li class = "projectInfo">
@@ -292,7 +293,7 @@ function filterbyNewest(json){
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
-      projectName = project.name
+      projectName = project.name.replace(/'/g,"\'")
     }
     if(project.first_photo){
       return `<li class = "projectInfo">
@@ -334,7 +335,7 @@ function filterbyOldest(json){
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
-      projectName = project.name
+      projectName = project.name.replace(/'/g,"\'")
     }
     if(project.first_photo){
       return `<li class = "projectInfo">
@@ -378,7 +379,7 @@ function filterComp(json){
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
-      projectName = project.name
+      projectName = project.name.replace(/'/g,"\'")
     }
     if(project.first_photo){
       return `<li class = "projectInfo">
