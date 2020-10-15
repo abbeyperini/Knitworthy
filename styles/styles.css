@@ -73,14 +73,6 @@ nav button {
     justify-content: center;
 }
 
-/* nav {
-    padding: 15px;
-} */
-
-/* img {
-    margin: 2%;
-} */
-
 p {
     padding: 10px;
     margin: 5px;
@@ -111,7 +103,6 @@ input {
     align-items: center;
     justify-content: flex-end;
     margin: 2px;
-    /* border: 2px solid #685B86; */
     border-radius: 8px;
     background-color: #C9E4E4;
     width: clamp(210px, 50%, 210px);
@@ -124,6 +115,12 @@ input {
 }
 
 .projectInfo img {
+    margin-bottom: 15px;
+}
+
+.projectInfoBtns {
+    display: flex;
+    place-content: center;
     margin-bottom: 15px;
 }
 
@@ -140,7 +137,7 @@ input {
     scrollbar-width: none;
 }
 
-.modal{
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -152,27 +149,22 @@ input {
     background-color: rgba(0,0,0,0.5);
     overflow: hidden;
 }
-.modal-content{
+.modal-content {
     background-color: #f4f4f4 ;
     margin: 20% auto;
     padding:  20px;
     width:  70%;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17)
 }
-.closeBtn{
+.closeBtn {
    color: #ccc;
    float: right;
    font-size: 30px; 
 }
-.closeBtn:hover,.closeBtn:focus{
+.closeBtn:hover,.closeBtn:focus {
     color:black;
     text-decoration: none;
     cursor: pointer;
-}
-.projectInfoBtns {
-    display: flex;
-    place-content: center;
-    margin-bottom: 15px;
 }
 
 footer {
@@ -182,25 +174,23 @@ footer {
     align-items: center;
     color: white;
 }
+
 ::-webkit-scrollbar {
     display: none;
 }
 
-button:hover {
+button:hover, button:focus {
     color: #685B86;
+    cursor: pointer;
 }
 
 a:link, a:active, a:visited {
     color: white;
     text-decoration: none;
-  }
+}
   
-  a:hover, a:focus {
+a:hover, a:focus {
     color: #685B86;
-  }
-
-button:hover, button:focus {
-    cursor: pointer;
 }
 
 /* dropdown menu styling */
@@ -210,34 +200,34 @@ button:hover, button:focus {
     display: grid;
     place-items: center;
     height: 59px;
-  }
+}
   
-  .menu-container li {
+.menu-container li {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     place-items: center;
-  }
+}
   
-  .dropdown__menu {
+.dropdown__menu {
     grid-auto-flow: column;
-  }
+}
   
-  .dropdown__menu li {
+.dropdown__menu li {
     margin: 0 0.5rem;
-  }
+}
   
-  .dropdown__title {
+.dropdown__title {
     background-color: transparent;
     border: none;
     font-family: inherit;
     font-size: 1.125rem;
     text-align: center;
     display:none;
-  }
+}
   
-  .dropdown__title a {
+.dropdown__title a {
     text-decoration: none;
     text-align: center;
     display: inline-block;
@@ -245,13 +235,13 @@ button:hover, button:focus {
     padding: 1rem 0.5rem;
     display: inline-flex;
     align-items: center;
-  }
+}
   
-  .dropdown {
+.dropdown {
     position: relative;
-  }
+}
   
-  .dropdown__menu {
+.dropdown__menu {
     background-color: #B4DCDB;
     border-radius: 4px;
     box-shadow: 0 0.15em 0.25em rgba(black, 0.25);
@@ -265,31 +255,29 @@ button:hover, button:focus {
     transform-origin: top center;
     opacity: 0.3;
     transition: 280ms all 120ms ease-out;
-  }
+}
   
-  .dropdown__menu a {
+.dropdown__menu a {
     display: block;
     padding: 0.5em;
-  }
+}
   
-  /* .dropdown .ally-focus-within:focus .dropdown__menu */
-  
-  .dropdown:hover .dropdown__menu, .dropdown:focus-within .dropdown__menu {
+.dropdown:hover .dropdown__menu, .dropdown:focus-within .dropdown__menu {
     opacity: 1;
     transform: rotateX(0) translateX(-50%);
     visibility: visible;
-  }
+}
   
-  .dropdown__title:after {
+.dropdown__title:after {
     content: "";
     border: 0.35rem solid transparent;
     border-top-color: rgba(blue, 0.45);
     margin-left: 0.25em;
     transform: translateY(0.15em);
-  }
-  /* dropdown menu styling */
+}
+/* dropdown menu styling */
 
-@media only screen and (min-width: 461px) {
+@media only screen and (min-width: 900px) {
     #profileInfo {
         width: 900px;
         height: 487px;
@@ -337,7 +325,45 @@ button:hover, button:focus {
     }
 }
 
+@media (min-width: 462px) and (max-width: 899px) {
+    #profileInfo {
+        width: 500px;
+        height: 487px;
+        margin-left: 0;
+    }
+
+    #projectDetail {
+        height: 250px;
+        width: 100%;
+    }
+    #imageDetails {
+        display: grid;
+        place-items: center;
+    }
+    #imageDetailsText {
+        margin: auto;
+        text-align: center;
+    }
+    .logo {
+        width: 150px;
+        height: 150px;
+    }
+    #profileInfo {
+        margin: 0px;
+    }
+    .modal-content {
+        width: clamp(30ch, 25%, 36ch);
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+}
+
 @media (min-width: 300px) and (max-width: 461px) {
+    #profileInfo {
+        margin: 0px;
+    }
+
     #projectDetail {
         height: 250px;
         width: 100%;
