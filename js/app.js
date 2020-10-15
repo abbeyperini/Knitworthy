@@ -8,6 +8,7 @@ let filterPopularityBTN = document.getElementById("filterpopularity")
 let filterNewest = document.getElementById("byNewest")
 let filterOldest = document.getElementById("byOldest")
 let filterComplete = document.getElementById("completedStatus")
+let filterDropdown = document.getElementsByClassName("dropdown__title")[0];
 window.addEventListener("click",outsideClick)
 
 // Making username accept when enter
@@ -19,6 +20,7 @@ nameInput.addEventListener('keypress',function(e){
     let url = `https://api.ravelry.com/projects/${name}/list.json`;
   getAPI(url).then(function (json) {
     showProjects(json);
+    showFilter()
   });
   }
 })
@@ -27,6 +29,7 @@ nameSearch.addEventListener("click", () => {
   let url = `https://api.ravelry.com/projects/${name}/list.json`;
   getAPI(url).then(function (json) {
     showProjects(json);
+    showFilter()
   });
 });
 
@@ -139,6 +142,14 @@ function outsideClick(click){
   if(click.target == modal){
     modal.style.display = "none"
   }
+}
+
+
+//Function to show filter button
+function showFilter(){
+  if(profileInfo.innerHTML !== ""){
+    filterDropdown.style.display = "block";
+    }
 }
 
 //function to fetch data from ravelry

@@ -226,6 +226,7 @@ a:link, a:active, a:visited {
     font-family: inherit;
     font-size: 1.125rem;
     text-align: center;
+    display:none;
   }
   
   .dropdown__title a {
