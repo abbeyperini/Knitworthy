@@ -42,31 +42,27 @@ function showProjects(json) {
   } else {
     let projects = json.projects.map((project) => {
       let projectName = '';
+      let title = ''
+      let photo = ''
       if (project.name == null || project.name == "") {
         projectName = "No name"
       } else {
         projectName = project.name.replace(/'/g,"\\'")
-        titleName = project.name.replace(/'/g,"\'")
+        title = project.name.replace(/'/g,"\'")
       }
-      if(project.first_photo){
-        return `<li class = "projectInfo">
-                        <p>${titleName}</p>
-                        <img src = ${project.first_photo.square_url}>
-                        <div class="projectInfoBtns">
-                          <button onclick="showState('${project.pattern_id}', '${project.first_photo.square_url}', '${projectName}')">Yardage</button>
-                          <button onclick="showTime('${project.completed}', '${project.started}', '${project.first_photo.square_url}', '${projectName}')">Time</button>
-                        </div>
-                    </li>`;
+      if(project.first_photo == null){
+        photo = 'images/placeholder.jpg'
       }else{
+        photo = project.first_photo.square_url
+      }
         return `<li class = "projectInfo">
-                        <p>${titleName}</p>
-                        <img src ="images/placeholder.jpg" >
+                        <p>${title}</p>
+                        <img src = ${photo}>
                         <div class="projectInfoBtns">
-                          <button onclick="showState('${project.pattern_id}', 'images/placeholder.jpg', '${projectName}')">Yardage</button>
-                          <button onclick="showTime('${project.completed}', '${project.started}', 'images/placeholder.jpg', '${projectName}')">Time</button>
+                          <button onclick="showState('${project.pattern_id}', '${photo}', '${projectName}')">Yardage</button>
+                          <button onclick="showTime('${project.completed}', '${project.started}', '${photo}', '${projectName}')">Time</button>
                         </div>
                     </li>`;
-      }
     });
     profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
   }
@@ -248,11 +244,13 @@ function showFilterProjects(json){
   console.log(filter)
   let projects = filter.map((project) => {
     let projectName = '';
-    let photo ='';
+    let title = ''
+    let photo = ''
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
-      projectName = project.name.replace(/'/g,"\'")
+      projectName = project.name.replace(/'/g,"\\'")
+      title = project.name.replace(/'/g,"\'")
     }
     if(project.first_photo == null){
       photo = 'images/placeholder.jpg'
@@ -260,7 +258,7 @@ function showFilterProjects(json){
       photo = project.first_photo.square_url
     }
       return `<li class = "projectInfo">
-                      <p>${projectName}</p>
+                      <p>${title}</p>
                       <img src = ${photo}>
                       <div class="projectInfoBtns">
                         <button onclick="showState('${project.pattern_id}', '${photo}', '${projectName}')">Yardage</button>
@@ -285,11 +283,13 @@ function filterbyNewest(json){
   let filter = json.projects.sort((a,b)=> b.id - a.id)
   let projects = filter.map((project) => {
     let projectName = '';
-    let photo ='';
+    let title = ''
+    let photo = ''
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
-      projectName = project.name.replace(/'/g,"\'")
+      projectName = project.name.replace(/'/g,"\\'")
+      title = project.name.replace(/'/g,"\'")
     }
     if(project.first_photo == null){
       photo = 'images/placeholder.jpg'
@@ -297,7 +297,7 @@ function filterbyNewest(json){
       photo = project.first_photo.square_url
     }
       return `<li class = "projectInfo">
-                      <p>${projectName}</p>
+                      <p>${title}</p>
                       <img src = ${photo}>
                       <div class="projectInfoBtns">
                         <button onclick="showState('${project.pattern_id}', '${photo}', '${projectName}')">Yardage</button>
@@ -322,11 +322,13 @@ function filterbyOldest(json){
   let filter = json.projects.sort((a,b)=> a.id - b.id)
   let projects = filter.map((project) => {
     let projectName = '';
-    let photo ='';
+    let title = ''
+    let photo = ''
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
-      projectName = project.name.replace(/'/g,"\'")
+      projectName = project.name.replace(/'/g,"\\'")
+      title = project.name.replace(/'/g,"\'")
     }
     if(project.first_photo == null){
       photo = 'images/placeholder.jpg'
@@ -334,7 +336,7 @@ function filterbyOldest(json){
       photo = project.first_photo.square_url
     }
       return `<li class = "projectInfo">
-                      <p>${projectName}</p>
+                      <p>${title}</p>
                       <img src = ${photo}>
                       <div class="projectInfoBtns">
                         <button onclick="showState('${project.pattern_id}', '${photo}', '${projectName}')">Yardage</button>
@@ -361,11 +363,13 @@ function filterComp(json){
   ))
   let projects = filter.map((project) => {
     let projectName = '';
-    let photo ='';
+    let title = ''
+    let photo = ''
     if (project.name == null || project.name == "") {
       projectName = "No name"
     } else {
-      projectName = project.name.replace(/'/g,"\'")
+      projectName = project.name.replace(/'/g,"\\'")
+      title = project.name.replace(/'/g,"\'")
     }
     if(project.first_photo == null){
       photo = 'images/placeholder.jpg'
@@ -373,7 +377,7 @@ function filterComp(json){
       photo = project.first_photo.square_url
     }
       return `<li class = "projectInfo">
-                      <p>${projectName}</p>
+                      <p>${title}</p>
                       <img src = ${photo}>
                       <div class="projectInfoBtns">
                         <button onclick="showState('${project.pattern_id}', '${photo}', '${projectName}')">Yardage</button>
