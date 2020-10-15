@@ -1,7 +1,7 @@
 /* powder-blue: #B4DCDB; */
 /* salmon: #ED786D; */
 /* dark blue gray: #685B86 */
-/* ming: #685B86 */
+/* ming: #016D77 */
 
 * {
     margin: 0;
@@ -87,7 +87,7 @@ p {
 }
 
 button {
-    background-color: #ED786D;
+    background-color: #016D77;
     border: none;
     color: white;
     padding: 10px;
@@ -197,6 +197,10 @@ a:link, a:active, a:visited {
     color: #685B86;
   }
 
+button:hover, button:focus {
+    cursor: pointer;
+}
+
 /* dropdown menu styling */
 .menu-container {
     background-color: none;
@@ -210,6 +214,7 @@ a:link, a:active, a:visited {
     margin: 0;
     padding: 0;
     display: grid;
+    place-items: center;
   }
   
   .dropdown__menu {
@@ -244,11 +249,11 @@ a:link, a:active, a:visited {
   }
   
   .dropdown__menu {
-    background-color: rgba(255,255,255, 0.1);
+    background-color: #B4DCDB;
     border-radius: 4px;
     box-shadow: 0 0.15em 0.25em rgba(black, 0.25);
     padding: 0.5em 0;
-    min-width: 9ch;
+    min-width: 10ch;
     position: absolute;
     top: calc(100% - 0.25rem);
     left: 50%;
@@ -327,10 +332,6 @@ a:link, a:active, a:visited {
     .usernameSearch button {
         margin-right: 30%;
     }
-
-    .dropdown__menu {
-        min-width: 15ch;
-      }
 }
 
 @media (min-width: 300px) and (max-width: 461px) {
