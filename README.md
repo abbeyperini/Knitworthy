@@ -1,6 +1,6 @@
 <h1> Knitworthy </h1>
 
-  <img src="images/Knitworthy2.png" width=500 height=300>
+  <img src="images/Knitworthy2.png" width=400 height=300>
 
 <h2> Summary </h2>
 
