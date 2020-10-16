@@ -276,10 +276,10 @@ function filterbyNewest(json){
     let title = ''
     let photo = ''
     if (project.name == null || project.name == "") {
-      let projectName = "No name"
+      projectName = "No name"
     } else {
-      let projectName = project.name.replace(/'/g,"\\'")
-       let title = project.name.replace(/'/g,"\'")
+      projectName = project.name.replace(/'/g,"\\'")
+      title = project.name.replace(/'/g,"\'")
     }
     project.first_photo? photo = project.first_photo.square_url : photo = 'images/placeholder.jpg'
       return returnValue(title,projectName,photo,project.pattern_id,project.completed,project.started);
