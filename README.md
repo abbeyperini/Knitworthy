@@ -27,7 +27,7 @@
 
 <img src="https://github.com/abbeyperini/Knitworthy/blob/master/images/knitworthygif.gif">
 
-<img src="images/Screenshot.png" width=900 height=600>
+<img src="images/Screenshot.png" width=900 height=630>
 
 ## Getting Started
 
