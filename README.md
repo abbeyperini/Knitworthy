@@ -21,7 +21,7 @@
 
 - Knitworthy compares project data to real life time and length measurements to put the time and length of yarn that goes into a project into perspective for someone who does not knit or crochet.
 
-- Visit [Knitworthy](http://knitworthy.surge.sh/) and enter some Ravelry usernames like alilaclie, knitqueen, and fisheep31.
+- Visit [Knitworthy](http://knitworthy.net) and enter some Ravelry usernames like alilaclie, knitqueen, and fisheep31.
 
 ## Videos and Screenshots
 
