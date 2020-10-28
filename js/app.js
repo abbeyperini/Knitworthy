@@ -12,13 +12,37 @@ let filterDropdown = document.getElementsByClassName("dropdown__title")[0];
 window.addEventListener("click",outsideClick)
 
 // Making username accept when enter
-
+let projectArray =[]
+let projectData = []
 var name
+
+function collectData(json) {
+  projectData = []
+  let projects= json.projects.map((project)=>{
+    projectData.push(project)
+  })
+  let projectInfo = projectData.map((project)=>{
+    let projectName = '';
+      let title = ''
+      let photo = ''
+      if (project.name == null || project.name == "") {
+        projectName = "No name"
+      } else {
+        projectName = project.name.replace(/'/g,"\\'")
+        title = project.name.replace(/'/g,"\'")
+      }
+      project.first_photo? photo = project.first_photo.square_url : photo = 'images/placeholder.jpg'
+      let detailInfo = [title,projectName,photo,project.pattern_id,project.completed,project.started]
+      console.log(detailInfo)
+  })
+}
+
 nameInput.addEventListener('keypress',function(e){
   if(e.key=='Enter'){
     name = this.value;
     let url = `https://api.ravelry.com/projects/${name}/list.json`;
   getAPI(url).then(function (json) {
+    collectData(json)
     showProjects(json);
     showFilter()
   });
