@@ -12,16 +12,49 @@ let filterDropdown = document.getElementsByClassName("dropdown__title")[0];
 window.addEventListener("click",outsideClick)
 
 // Making username accept when enter
-let projectArray =[]
-let projectData = []
-var name
+let ravelryData = []
 
-function collectData(json) {
-  projectData = []
-  let projects= json.projects.map((project)=>{
-    projectData.push(project)
+nameInput.addEventListener('keypress',function(e){
+  if(e.key=='Enter'){
+    let name = this.value;
+    getData(name)
+  }
+})
+nameSearch.addEventListener("click", () => {
+  let name = nameInput.value;
+  getData(name)
   })
-  let projectInfo = projectData.map((project)=>{
+
+
+function getData(name){
+  let url = `https://api.ravelry.com/projects/${name}/list.json`;
+  getAPI(url).then(function (json) {
+    createDataArray(collectData(json))
+    displayData(ravelryData)
+    showFilter()
+  }).catch((error)=>{
+    filterDropdown.style.display = "none"
+  })
+}
+function collectData(json) {
+  profileInfo.innerHTML = ''
+  projecObjectList = []
+  let projects= json.projects.map((project)=>{
+    projecObjectList.push(project)
+  })
+  if(projecObjectList.length !== 0){
+  return projecObjectList
+  }else{
+    window.alert("Please choose a username with at least one project.")
+    filterDropdown.style.display = "none"
+    return projecObjectList
+  }
+}
+
+
+function createDataArray (dataArray){
+  ravelryData = []
+  let projects = dataArray.map((project)=>{
     let projectName = '';
       let title = ''
       let photo = ''
@@ -32,56 +65,10 @@ function collectData(json) {
         title = project.name.replace(/'/g,"\'")
       }
       project.first_photo? photo = project.first_photo.square_url : photo = 'images/placeholder.jpg'
-      let detailInfo = [title,projectName,photo,project.pattern_id,project.completed,project.started]
-      console.log(detailInfo)
+      let dataValue = [title,projectName,photo,project.pattern_id,project.completed,project.started,project.favorites_count,project.id]
+      ravelryData.push(dataValue)
   })
 }
-
-nameInput.addEventListener('keypress',function(e){
-  if(e.key=='Enter'){
-    name = this.value;
-    let url = `https://api.ravelry.com/projects/${name}/list.json`;
-  getAPI(url).then(function (json) {
-    collectData(json)
-    showProjects(json);
-    showFilter()
-  });
-  }
-})
-nameSearch.addEventListener("click", () => {
-  name = nameInput.value;
-  let url = `https://api.ravelry.com/projects/${name}/list.json`;
-  getAPI(url).then(function (json) {
-    showProjects(json);
-    showFilter()
-  });
-});
-
-function showProjects(json) {
-  while (profileInfo.firstChild) {
-    profileInfo.removeChild(profileInfo.firstChild)
-  };
-  if (json.projects.length == 0) {
-    window.alert("Please choose a username with at least one project.")
-  } else {
-    let projects = json.projects.map((project) => {
-      let projectName = '';
-      let title = ''
-      let photo = ''
-      if (project.name == null || project.name == "") {
-        projectName = "No name"
-      } else {
-        projectName = project.name.replace(/'/g,"\\'")
-        title = project.name.replace(/'/g,"\'")
-      }
-      project.first_photo? photo = project.first_photo.square_url : photo = 'images/placeholder.jpg'
-      return returnValue(title,projectName,photo,project.pattern_id,project.completed,project.started)
-      });
-    profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
-  }
-}
-//Function to return value from array.map
-
 function returnValue(title,projectName,photo,id,completed,started){
   return `<li class = "projectInfo">
                         <p>${title}</p>
@@ -92,7 +79,13 @@ function returnValue(title,projectName,photo,id,completed,started){
                         </div>
                     </li>`
 }
-
+function displayData(dataArray){
+  profileInfo.innerHTML = ''
+  let projects = dataArray.map((project)=>{
+    return returnValue(project[0],project[1],project[2],project[3],project[4],project[5])
+  })
+  profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
+}
 
 function showState(id, img, name) {
   if (id == "null") {
@@ -256,117 +249,35 @@ function generateTimeText(name, time) {
 
 //add function to popularity filter button
 filterPopularityBTN.addEventListener("click",()=>{
-  let url = `https://api.ravelry.com/projects/${name}/list.json`
-  getAPI(url).then(function(json){
-    showFilterProjects(json)
-  })
-  console.log(url)
+  filterAndSort('favourite')
 })
 
-function showFilterProjects(json){
-  profileInfo.innerHTML = ""
-  let filter = json.projects.sort((a,b)=> b.favorites_count - a.favorites_count)
-  console.log(filter)
-  let projects = filter.map((project) => {
-    let projectName = '';
-    let title = ''
-    let photo = ''
-    if (project.name == null || project.name == "") {
-      projectName = "No name"
-    } else {
-      projectName = project.name.replace(/'/g,"\\'")
-      title = project.name.replace(/'/g,"\'")
-    }
-    project.first_photo? photo = project.first_photo.square_url : photo = 'images/placeholder.jpg'
-      return returnValue(title,projectName,photo,project.pattern_id,project.completed,project.started)
-  });
-  profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
-}
-
-//add Function to filter by Newest
+//add function to filter by Newest
 filterNewest.addEventListener("click",()=>{
-  let url = `https://api.ravelry.com/projects/${name}/list.json`
-  getAPI(url).then(function(json){
-    filterbyNewest(json)
-  })
-  console.log(url)
+  filterAndSort('newest')
 })
-
-function filterbyNewest(json){
-  profileInfo.innerHTML = ""
-  let filter = json.projects.sort((a,b)=> b.id - a.id)
-  let projects = filter.map((project) => {
-    let projectName = '';
-    let title = ''
-    let photo = ''
-    if (project.name == null || project.name == "") {
-      projectName = "No name"
-    } else {
-      projectName = project.name.replace(/'/g,"\\'")
-      title = project.name.replace(/'/g,"\'")
-    }
-    project.first_photo? photo = project.first_photo.square_url : photo = 'images/placeholder.jpg'
-      return returnValue(title,projectName,photo,project.pattern_id,project.completed,project.started);
-  });
-  profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
-}
 
 //add function to filter by Oldest
 filterOldest.addEventListener("click",()=>{
-  let url = `https://api.ravelry.com/projects/${name}/list.json`
-  getAPI(url).then(function(json){
-    filterbyOldest(json)
-  })
-  console.log(url)
+  filterAndSort('oldest')
 })
-
-function filterbyOldest(json){
-  profileInfo.innerHTML = ""
-  let filter = json.projects.sort((a,b)=> a.id - b.id)
-  let projects = filter.map((project) => {
-    let projectName = '';
-    let title = ''
-    let photo = ''
-    if (project.name == null || project.name == "") {
-      projectName = "No name"
-    } else {
-      projectName = project.name.replace(/'/g,"\\'")
-      title = project.name.replace(/'/g,"\'")
-    }
-    project.first_photo? photo = project.first_photo.square_url : photo = 'images/placeholder.jpg'
-      return returnValue(title,projectName,photo,project.pattern_id,project.completed,project.started);
-  });
-  profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
-}
 
 //Add function to filter only completed project
 filterComplete.addEventListener("click",()=>{
-  let url = `https://api.ravelry.com/projects/${name}/list.json`
-  getAPI(url).then(function(json){
-    filterComp(json)
-  })
-  console.log(url)
+  filterAndSort('completed')
 })
 
-function filterComp(json){
-  profileInfo.innerHTML = ""
-  let filter = json.projects.filter(project=>(
-    project.completed
-  ))
-  let projects = filter.map((project) => {
-    let projectName = '';
-    let title = ''
-    let photo = ''
-    if (project.name == null || project.name == "") {
-      projectName = "No name"
-    } else {
-      projectName = project.name.replace(/'/g,"\\'")
-      title = project.name.replace(/'/g,"\'")
-    }
-    project.first_photo? photo = project.first_photo.square_url : photo = 'images/placeholder.jpg'
-      return returnValue(title,projectName,photo,project.pattern_id,project.completed,project.started);
-  });
-  profileInfo.insertAdjacentHTML("beforeend", projects.join(""));
+function filterAndSort(type){
+  let filter
+  if(type ==='favourite'){
+    filter = ravelryData.sort((a,b)=> b[6] - a[6])
+  }else if(type=='newest'){
+    filter = ravelryData.sort((a,b)=> b[7] - a[7])
+  }else if( type =='oldest'){
+    filter = ravelryData.sort((a,b)=> a[7] - b[7])
+  }else if(type =='completed'){
+    filter = ravelryData.filter(project=>(project[4]))
+  }
+  displayData(filter)
 }
-
 
