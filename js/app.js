@@ -220,7 +220,7 @@ function generateText(name, size, randomize) {
   if (randomize == 'randomize') {
     while (true) {
       let ranIndex = getRandomInt(0, times.length)
-      if ((lengths[ranIndex].length / size) > 0) {
+      if ((lengths[ranIndex].length / size) > 0.01) {
         index = ranIndex
         coefficient = lengths[index].length / size
         break
@@ -257,7 +257,7 @@ function generateTimeText(name, time, randomize) {
   if (randomize == 'randomize') {
     while (true) {
       let ranIndex = getRandomInt(0, times.length)
-      if ((time / times[ranIndex].time) > 0) {
+      if ((time / times[ranIndex].time) > 0.01) {
         index = ranIndex
         coefficient = time / times[index].time
         break
