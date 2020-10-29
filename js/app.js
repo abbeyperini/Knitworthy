@@ -95,21 +95,24 @@ function showState(id, img, name) {
   } else {
     let url = `https://api.ravelry.com/patterns/${id}.json`;
     getAPI(url).then(function (json) {
-      showProjectDetail(json, img, name);
+      let max_yardage = json.pattern.yardage_max;
+      let yardage = json.pattern.yardage
+      showProjectDetail(max_yardage, yardage, img, name);
     });
   }
 }
 
-function showTime(completed, started, img, name) {
+function showTime(completed, started, img, name, randomize) {
   if (started != "null" && completed != "null") {
     let startDate = new Date(started)
     let endDate = new Date(completed)
     if (startDate - endDate == 0) {
       let totalTime = 3;
-      let timeText = generateTimeText(name, totalTime)
+      let timeText = generateTimeText(name, totalTime, randomize)
       let details = `<div id = "imageDetails">
                         <img src = '${img}'>
                         <p>${timeText}</p>
+                        <button onclick="showTime('${completed}', '${started}', '${img}', '${name}', 'randomize')">Randomize</button>
                     </div>`
 
       projectDetail.innerHTML = details;
@@ -117,10 +120,11 @@ function showTime(completed, started, img, name) {
       openModal();
     } else {
       let totalTime = (((endDate - startDate) / 3600000) * .125)
-      let timeText = generateTimeText(name, totalTime)
+      let timeText = generateTimeText(name, totalTime, randomize)
       let details = `<div id = "imageDetails">
                         <img src = '${img}'>
                         <p>${timeText}</p>
+                        <button onclick="showTime('${completed}', '${started}', '${img}', '${name}', 'randomize')">Randomize</button>
                     </div>`
 
       projectDetail.innerHTML = details;
@@ -132,23 +136,25 @@ function showTime(completed, started, img, name) {
   }
 }
 
-function showProjectDetail(json, img, name) {
-  if (json.pattern.yardage_max != null) {
-    let lengthText = generateText(name, json.pattern.yardage_max)
+function showProjectDetail(max_yardage, yardage, img, name, randomize) {
+  if (max_yardage != null) {
+    let lengthText = generateText(name, max_yardage, randomize)
     let details = `<div id = "imageDetails">
                       <img src = '${img}'>
                       <p>${lengthText}</p>
+                      <button onclick="showProjectDetail('${max_yardage}', '${yardage}', '${img}', '${name}', 'randomize')">Randomize</button>
                       </div>`;
     projectDetail.innerHTML = details;
     
     // call function to open modal
     openModal();
 
-  } else if (json.pattern.yardage != null) {
-    let lengthText = generateText(name, json.pattern.yardage)
+  } else if (yardage != null) {
+    let lengthText = generateText(name, yardage, randomize)
     let details = `<div id = "imageDetails">
                       <img src = '${img}'>
                       <p>${lengthText}</p>
+                      <button onclick="showProjectDetail('${max_yardage}', '${yardage}', '${img}', '${name}', 'randomize')">Randomize</button>
                       </div>`;
     projectDetail.innerHTML = details;
 
@@ -206,15 +212,26 @@ function getAPI(url) {
 
 }
 
-function generateText(name, size) {
+function generateText(name, size, randomize) {
   console.log(size)
   let coefficient = 1000000000000000;
   let index = "";
 
-  for (i=0; i < lengths.length; i++) {
-    if ((lengths[i].length / size) < coefficient && (lengths[i].length / size) > 1) {
-      coefficient = lengths[i].length / size 
-      index = i;
+  if (randomize == 'randomize') {
+    while (true) {
+      let ranIndex = getRandomInt(0, times.length)
+      if ((lengths[ranIndex].length / size) > 0) {
+        index = ranIndex
+        coefficient = lengths[index].length / size
+        break
+      }
+    }
+  } else {
+    for (i=0; i < lengths.length; i++) {
+      if ((lengths[i].length / size) < coefficient && (lengths[i].length / size) > 1) {
+        coefficient = lengths[i].length / size 
+        index = i;
+      }
     }
   }
   
@@ -232,16 +249,28 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
-function generateTimeText(name, time) {
+function generateTimeText(name, time, randomize) {
   console.log(time)
   index = "";
   let coefficient = 0;
-  while (true) {
-    let ranIndex = getRandomInt(0, times.length)
-    if ((time / times[ranIndex].time) > 1) {
-      index = ranIndex
-      coefficient = time / times[index].time
-      break
+
+  if (randomize == 'randomize') {
+    while (true) {
+      let ranIndex = getRandomInt(0, times.length)
+      if ((time / times[ranIndex].time) > 0) {
+        index = ranIndex
+        coefficient = time / times[index].time
+        break
+      }
+    }
+  } else {
+    while (true) {
+      let ranIndex = getRandomInt(0, times.length)
+      if ((time / times[ranIndex].time) > 1) {
+        index = ranIndex
+        coefficient = time / times[index].time
+        break
+      }
     }
   }
   return `In the time it took you to make your ${name} project, you could ${times[index].task} ${coefficient.toFixed(2)} times (assuming you worked on it 3 hours every day).`
