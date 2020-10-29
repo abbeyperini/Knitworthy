@@ -96,7 +96,7 @@ function showState(id, img, name) {
     let url = `https://api.ravelry.com/patterns/${id}.json`;
     getAPI(url).then(function (json) {
       let max_yardage = json.pattern.yardage_max;
-      let yardage = json.pattern.yardage
+      let yardage = json.pattern.yardage;
       showProjectDetail(max_yardage, yardage, img, name);
     });
   }
@@ -137,7 +137,7 @@ function showTime(completed, started, img, name, randomize) {
 }
 
 function showProjectDetail(max_yardage, yardage, img, name, randomize) {
-  if (max_yardage != null) {
+  if (max_yardage != null && max_yardage != undefined && max_yardage != "null") {
     let lengthText = generateText(name, max_yardage, randomize)
     let details = `<div id = "imageDetails">
                       <img src = '${img}'>
@@ -149,7 +149,7 @@ function showProjectDetail(max_yardage, yardage, img, name, randomize) {
     // call function to open modal
     openModal();
 
-  } else if (yardage != null) {
+  } else if (yardage != null && yardage != undefined && yardage != "null") {
     let lengthText = generateText(name, yardage, randomize)
     let details = `<div id = "imageDetails">
                       <img src = '${img}'>
@@ -203,7 +203,6 @@ function getAPI(url) {
       return response.json();
     })
     .then(function (json) {
-      console.log(json);
       return json;
     }).catch(function(error){
       window.alert("Your username is not available!")
