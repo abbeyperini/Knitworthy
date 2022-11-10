@@ -197,7 +197,7 @@ function showFilter(){
 //function to fetch data from ravelry
 function getAPI(url) {
   const headers = new Headers();
-  headers.append("Authorization", "Basic " + btoa(username + ":" + password));
+  headers.append("Authorization", "Basic " + btoa(process.env.username + ":" + process.env.password));
   return fetch(url, { method: "GET", headers: headers })
     .then(function (response) {
       return response.json();
