@@ -12,6 +12,7 @@
   - [Contributing](#contributing)
   - [Authors](#authors)
   - [Acknowledgments](#acknowledgments)
+  - [License](#license)
 
 ## About the Project
 
@@ -69,3 +70,5 @@ Please reach out to Abbey Perini at abbeyperini@gmail.com if you are interested 
   - **Nathan Orris** - *The Certified* [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)- **DiR at DigitalCrafts Houston** -
     [NathanNoSudo](https://github.com/NathanNoSudo)
 
+## License
+We are not offering a license for this project.
